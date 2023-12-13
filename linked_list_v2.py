@@ -7,20 +7,19 @@ class Node:
 class LinkedList:
     def __init__(self):
         self.root = None
-    
-    
-    def insert(self,value):
+
+    def insert(self, value):
         if self.root is None:
             self.root = Node(value)
         else:
             curr = self.root
-            # To avoid tracking the last node, we need to keep track of
+            # Not to lost the last node's pointer, we need to keep track of it
             last_node = curr
             while curr:
                 last_node = curr
                 curr = curr.next
             last_node.next = Node(value)
-    
+
     def reverse(self):
         if self.root is None:
             return
@@ -32,12 +31,12 @@ class LinkedList:
             # Change the current node's next chain with  it's left node
             curr.next = left
             # Update the left node
-            left = curr 
+            left = curr
             # Now go to the right node
             curr = right
         # Change the pointer to the last node
         self.root = left
-    
+
     def print(self):
         if self.root is None:
             return
@@ -49,16 +48,16 @@ class LinkedList:
 
 if __name__ == '__main__':
     values = [1, 2, 3, 4, 5, 6, 7]
-    
+
     linkedlist = LinkedList()
-    
+
     for value in values:
         linkedlist.insert(value)
-    
+
     print("in order: ")
     linkedlist.print()
     print("-"*40)
-    
+
     print("in reverse")
     linkedlist.reverse()
     linkedlist.print()
